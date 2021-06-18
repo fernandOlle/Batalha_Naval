@@ -154,12 +154,12 @@ public class GameView extends View {
 
         switch (state) {
             case PLAYERBOARD_CONFIG:
-                // se não for random o player bota os barcos
+
                 playerConfigState();
                 break;
 
             case ENEMYBOARD_CONFIG:
-                // se não for random o computador bota os barcos
+
                 enemyConfigState();
                 break;
 

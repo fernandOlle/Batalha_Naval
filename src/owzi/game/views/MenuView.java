@@ -47,7 +47,7 @@ public class MenuView extends View {
         btnRank.setMouseListener(new MouseListener() {
             @Override
             public void whenLeftPressed() {
-                getGame().setCurrentViewKey("Game");
+                getGame().setCurrentViewKey("Rank");
             }
         });
         btnRank.setFont(font);
