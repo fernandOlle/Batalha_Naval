@@ -88,6 +88,5 @@ public class NameView extends View {
         gv.setRandom(isRandom);
         gv.setPlayerName(playerName);
         getGame().setCurrentViewKey("Game");
-        //gv.startGame();
     }
 }

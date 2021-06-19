@@ -25,7 +25,7 @@ public class TextBox extends Item {
 
     public void update() {
         if(isSomeKeyPressed() && interval == 0) {
-            interval = 10;
+            interval = 7;
             if(getKey() == KeyEvent.VK_BACK_SPACE && count > 0) {
                 count --;
                 content = content.substring(0, content.length() -1);

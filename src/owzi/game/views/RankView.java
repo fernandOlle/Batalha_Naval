@@ -16,7 +16,7 @@ import java.util.Collections;
 
 public class RankView extends View {
 
-    Button btnReturn;
+    private Button btnReturn;
 
     public RankView(String name, Game game ) {
         super(name, game);
@@ -29,8 +29,8 @@ public class RankView extends View {
         );
 
         btnReturn =  new Button(
-                "Menu Inicial",
-                getGame().getWidth()-100,
+                "Menu",
+                getGame().getWidth()-300,
                 getGame().getHeight()/2-24,
                 100,
                 48
@@ -42,8 +42,6 @@ public class RankView extends View {
             }
         });
         btnReturn.setFont(font);
-
-
     }
 
     @Override
@@ -67,7 +65,7 @@ public class RankView extends View {
     }
 
     public String buildRank () {
-        ArrayList<Player> players = new Score().getPlayers();
+        ArrayList<Player> players =  Score.getInstance().loadPlayers();
 
         try {
             verifyList(players);
@@ -85,8 +83,8 @@ public class RankView extends View {
             return rankingFinal;
         } catch (IOException e){
             System.out.println(e.getMessage());
+            return "O rank esta vazio";
         }
-        return null;
     }
 
     public void verifyList(ArrayList<Player> players) throws IOException{

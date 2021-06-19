@@ -1,12 +1,9 @@
 package owzi.game.views;
 
-import javafx.scene.input.MouseButton;
 import owzi.engine.*;
 import owzi.game.bean.Ship;
-import owzi.game.gui.*;
 import owzi.game.gui.Button;
-import program.game.Barco;
-import program.game.Tabuleiro;
+import owzi.game.gui.*;
 
 import java.awt.*;
 import java.util.Random;
@@ -184,9 +181,6 @@ public class GameView extends View {
 
     }
 
-    // qtd: 0 1 2 3 4
-    // tam: 4 3 2 2 -
-    // typ: 1 2 3 4 -
     private void playerConfigState() {
         if (playerBoard.isClicked() || isRandom) {
             int col, row;
@@ -252,6 +246,7 @@ public class GameView extends View {
                     // acertou o bote
                     enemyBoard.getCell(col, row).setBackgroundColorDisable(new Color(0xFF0000));
                     if (enemyBoard.getShipCount() == 0) {
+                        this.hasWon = true;
                         this.state = GAMEOVER;
                     }
                     return;
@@ -265,12 +260,6 @@ public class GameView extends View {
         }
     }
 
-    int interval = 0;
-
-    /**
-     * - pega um x e y aleatorios para atacar o playerboard
-     * - verificar se a celula
-     */
     private void enemyTurnState() {
         // jogada do computador
         int col = random.nextInt(10);
@@ -294,6 +283,7 @@ public class GameView extends View {
     private void finalState() {
         FinalMenuView gv = (FinalMenuView) getGame().getViewManager().getView("FinalMenu");
         gv.setHasWon(this.hasWon);
+        gv.setPlayerName(this.playerName);
         getGame().setCurrentViewKey("FinalMenu");
         this.state = PLAYERBOARD_CONFIG;
         playerBoard = new PlayerBoard(this);

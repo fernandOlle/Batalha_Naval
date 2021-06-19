@@ -11,10 +11,11 @@ import java.awt.*;
 
 public class FinalMenuView extends View {
 
-    Button btnRestart;
-    Button btnReset;
-    Button btnExit;
-    Boolean hasWon;
+    private Button btnRestart;
+    private Button btnReset;
+    private Button btnExit;
+    private Boolean hasWon;
+    private String playerName;
 
     public FinalMenuView(String name, Game game) {
         super(name, game);
@@ -81,8 +82,9 @@ public class FinalMenuView extends View {
 
 
         String result = this.hasWon ? "Ganhou" : "Perdeu";
+
         g2d.setColor(new Color(0x000000));
-        g2d.drawString("Fim, " + result, 100, 50);
+        g2d.drawString("Fim. " + this.playerName + ", você " + result, 100, 50);
     }
 
     @Override
@@ -98,5 +100,13 @@ public class FinalMenuView extends View {
 
     public void setHasWon(Boolean hasWon) {
         this.hasWon = hasWon;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 }
