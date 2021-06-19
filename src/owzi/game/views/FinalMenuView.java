@@ -42,6 +42,7 @@ public class FinalMenuView extends View {
             }
         });
         btnReset.setFont(font);
+
         btnRestart =  new owzi.game.gui.Button(
                 "Jogar novamente",
                 getGame().getWidth()/250,
@@ -56,6 +57,7 @@ public class FinalMenuView extends View {
             }
         });
         btnRestart.setFont(font);
+
         btnExit =  new Button(
                 "Sair",
                 getGame().getWidth()/125,

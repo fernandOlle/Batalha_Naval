@@ -38,6 +38,7 @@ public abstract class Board extends Item {
                         setRow(tableRow);
                         clicked = true;
                     }
+
                     @Override
                     public void whenRightPressed() {
                         setColumn(tableColumn);
@@ -75,14 +76,14 @@ public abstract class Board extends Item {
             for (int i = k; i < k + length; i++) {
                 Cell cell = vertical ? getCell(k2, i) : getCell(i, k2);
                 cell.setShip(ship);
-                if(isPlayer) cell.setEnabled(false);
+                if (isPlayer) cell.setEnabled(false);
             }
 
             return true;
         }
         return false;
     }
-    
+
     public boolean canPlaceShip(Ship ship, int col, int row) {
 
         int length = ship.getSize();
@@ -112,7 +113,7 @@ public abstract class Board extends Item {
     }
 
     private Cell[] getNeighbors(int col, int row) {
-        Point[] points = new Point[] {
+        Point[] points = new Point[]{
                 new Point(col - 1, row),
                 new Point(col + 1, row),
                 new Point(col, row - 1),
@@ -122,7 +123,7 @@ public abstract class Board extends Item {
 
         for (Point p : points) {
             if (isValidPoint(p)) {
-                neighbors.add(getCell((int)p.getX(), (int)p.getY()));
+                neighbors.add(getCell((int) p.getX(), (int) p.getY()));
             }
         }
         return neighbors.toArray(new Cell[0]);
@@ -135,7 +136,7 @@ public abstract class Board extends Item {
     protected boolean isValidPoint(int col, int row) {
         return col >= 0 && col < 10 && row >= 0 && row < 10;
     }
-        
+
     public Cell getCell(int col, int row) {
         return cells[col][row];
     }
@@ -172,7 +173,7 @@ public abstract class Board extends Item {
         this.clicked = clicked;
     }
 
-    public void setIsPlayer (boolean isPlayer) {
+    public void setIsPlayer(boolean isPlayer) {
         this.isPlayer = isPlayer;
     }
 

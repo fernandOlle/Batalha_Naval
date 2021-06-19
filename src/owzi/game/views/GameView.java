@@ -47,16 +47,20 @@ public class GameView extends View {
         playerBoard = new PlayerBoard(this);
 
         btnExit = new Button(
-                "Sair",
+                "Menu",
                 getGame().getWidth() - 150,
                 25,
                 100,
                 48
         );
+
+
+
         btnExit.setMouseListener(new MouseListener() {
             @Override
             public void whenLeftPressed() {
-                getGame().exit(0);
+                getGame().getViewManager().addView(new GameView("Game", game));
+                getGame().setCurrentViewKey("Menu");
             }
         });
         btnExit.setFont(font);
@@ -134,9 +138,11 @@ public class GameView extends View {
         btnJet.render(g2d);
         btnScotter.render(g2d);
         btnPlane.render(g2d);
+        hint.render(g2d);
 
         // DEBUG
         g2d.drawString(String.valueOf(state), getGame().getWidth() - 50, 15);
+        g2d.drawString(this.playerName, getGame().getWidth() - 100, getGame().getHeight()-15);
     }
 
     @Override
@@ -148,6 +154,7 @@ public class GameView extends View {
         btnJet.update();
         btnScotter.update();
         btnPlane.update();
+        hint.update();
 
         switch (state) {
             case PLAYERBOARD_CONFIG:
@@ -288,6 +295,7 @@ public class GameView extends View {
         this.state = PLAYERBOARD_CONFIG;
         playerBoard = new PlayerBoard(this);
         enemyBoard = new EnemyBoard(this);
+        hint.reset();
     }
 
     public String getPlayerName() {
